@@ -34,6 +34,7 @@ def expand_string(str_expression):
     """
     multiples = []
     temp_str = ''
+    buffered_int = None
     open_parenthesis_count = 0
 
     def reset_temp_str(temp_str):
@@ -46,11 +47,17 @@ def expand_string(str_expression):
         try:
             mul = int(char)
             temp_str = reset_temp_str(temp_str)
+
+            if buffered_int:
+                multiples and multiples.pop()
+                mul = int(str(buffered_int)+str(mul))
             multiples.append(mul)
+            buffered_int = mul
         except ValueError:
             if char == '(':
                 temp_str = reset_temp_str(temp_str)
                 open_parenthesis_count += 1
+                buffered_int = None
             elif char == ')':
                 mul = multiples and multiples[-1] or 1
                 if temp_str:
@@ -62,8 +69,10 @@ def expand_string(str_expression):
                         multiples.append(temp_str)
                     temp_str = ''
                 open_parenthesis_count -= 1
+                buffered_int = None
             else:
                 temp_str += char
+                buffered_int = None
 
     if open_parenthesis_count:
         raise StringExpressionError('Mismatching opening and closing parenthesis')
