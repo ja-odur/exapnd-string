@@ -26,5 +26,15 @@ Would result in the output:
 ```bash
 NSSSNENWNWNWENWNWNW
 ```
+Shell example:
+```bash
+python -m expand_string 'N3(S)N2(E3(NW))'
+```
+
+Would result in the output:
+
+```bash
+NSSSNENWNWNWENWNWNW
+```
 
 For more details see the `expand_string` docstring.
