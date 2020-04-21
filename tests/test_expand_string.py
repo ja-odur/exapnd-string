@@ -5,7 +5,7 @@ from expand_string import expand_string, StringExpressionError
 class TestExpandString(unittest.TestCase):
 
     PLAIN_STRING = ('PLAIN', 'PLAIN')
-    NESTED_STRING = ('2(3(NW)2(W2(EE)W))', 'NWNWNWWEEEEWWEEEEWNWNWNWWEEEEWWEEEEW')
+    NESTED_STRING = ('2(3(NW)2(W2(EE)W))', 'NNNNNNWWWWWWWWWWEEEEEEEEEEEEEEEEWWWW')
     DOUBLE_DIGIT_STRING = ('W10(R)E', 'WRRRRRRRRRRE')
     MISMATCHED_PARENTHESIS = ('2(3(NW)2(W2(EE)W)', )
 
